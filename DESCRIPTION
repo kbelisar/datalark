@@ -1,0 +1,12 @@
+Package: datalark
+Title: The search for clean data!
+Version: 0.1.0
+Author: Kyla Belisario 
+Maintainer: Kyla Belisario <kyla_belisario@protonmail.com>
+Description: This package aids in the data cleaning of alpha-numeric (open-text) responses given by participants.
+Imports: stringi
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
