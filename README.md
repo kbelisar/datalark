@@ -1,10 +1,10 @@
 # The {datalark} package!
 
-Akin to the mudlark searching for treasures on the foreshore, the datalark often finds themselves having to search through messy data sets before finding data treasures! Clean data are essential to maintain data integrity, as improper cleaning can result in inaccurate or missing data. The {datalark} package aids in the data cleaning process of alpha-numeric (open-text) responses given by participants.
+Akin to the mudlark searching for hidden treasures on the foreshore, the datalark often finds themselves having to search through messy data sets before finding data treasures! Clean data are essential to maintain data integrity, as improper cleaning can result in inaccurate or missing data. The {datalark} package aids in the data cleaning of alpha-numeric (open-text) responses given by participants.
 
-When alpha-numeric responses are allowed in a response field such as number of hours worked, participants often give more than just a numeric estimate. Often, in their desire to be as accurate as possible, they will provide numeric ranges; use symbols such as “~”, “+”, or “<“; or will use words such as “approximate”. When this is not minimized through the restriction of response fields to numeric input only, it can require a lot of data cleaning. 
+When alpha-numeric responses are allowed in a response field, participants often give more than just a numeric estimate. Often, in their desire to be as accurate as possible, they will provide numeric ranges; use symbols such as “~”, “+”, ">" or “<“; or will use words such as “approximate”. When this is not minimized through the restriction of response fields to numeric input only, it can require a lot of data cleaning!
 
-Much like the mudlark carefully preserving their finds, the datalark maintains the integrity of the data to preserve data quality. This package consists of 5 functions which help the datalark to clean data whilst protecting against inadvertant damage caused my improper processing.
+Much like the mudlark carefully preserves their finds, the datalark preserves original data to maintain data quality. This package consists of 5 functions which help the datalark to clean alpha-numeric data effectively whilst protecting against inadvertant damage caused my improper processing.
 
 ## Installation
 
@@ -50,7 +50,7 @@ This function can clean the following units of measurement, which is selected us
 - Centimetres
 - Inches
 
-This function will also clean the following symbols, if the argument `symbols` is set to TRUE: "<", ">" ,"~", "+", "?", "??". Setting the `symbols` argument to TRUE will also remove words relating to approximations which are often seen in participant responses when the text field is open-ended: "less than", "greater than", "minimum", "maximum", "approximately", "around", "roughly".
+This function will also clean the following symbols, if the argument `symbols` is set to TRUE: "<", ">" ,"~", "+", "?", "??". Setting the `symbols` argument to TRUE will also remove words relating to approximations, which are often seen in participant responses when the text field is open-ended: "less than", "greater than", "minimum", "maximum", "approximately", "around", "roughly".
 
 ## clean_money()
 
@@ -58,7 +58,7 @@ Similar to the `clean_measures()` function, this function is specifically for mo
 
 ## rangle_calc()
 
-Participants, eager to be both detailed and precise in their resonses, will often give a range of values as an approximation, and can be cumbersome to clean! This function carefully transforms ranges into the average between the two values given, whilst also preserving all non-range responses (including alpha-numeric responses). This is especially important given that there may be additional text-based responses given that either can be handled using the other functions in this package, or in the case of complicated responses, can be retained and handled manually.
+Participants, eager to be both detailed and precise in their resonses, will often give a range of values as an approximation, and can be cumbersome to clean! This function carefully transforms ranges into the average between the two values given, whilst also preserving all non-range responses (including alpha-numeric responses). This is especially important given that there may be additional text-based responses that either can be handled using the other functions in this package, or in the case of complicated responses, can be retained and handled manually.
 
 ## zero_measures()
 
@@ -66,7 +66,7 @@ When alpha-numeric responses are allowed, participants can sometimes write their
 
 # Examples - Sample Data
 
-This sample data ('dl_data') provided by this package are a mock-up of common response formats seen when alpha-numeric responses are allowed. The data are from 15 fictional participants and are as follows:
+The sample data ('dl_data') provided by this package are a mock-up of common response formats seen when alpha-numeric responses are allowed. The data are from 15 fictional participants and are as follows:
 
 | Variable Name    | Description                    |
 |------------------|--------------------------------|
@@ -143,8 +143,7 @@ In the sample data, participant ID # 10 who identified that they work 2 jobs in 
 
 ## Minutes Exercised
 
-Taking a look at the 'minutes_exercised' variable, many many of the responses expressed in minutes include the word "minutes" (or an equivalent short-form). Additionally, many responses are expressed in hours. Both the `clean_measures()` and the `change_measures()` functions would be useful in cleaning these data.
-
+Taking a look at the 'minutes_exercised' variable, many many of the responses expressed in minutes include the word "minutes" (or an equivalent short-form). Additionally, many responses are expressed in hours. Both the `clean_measures()` and the `change_measures()` functions would be useful in cleaning these data:
 
 ```
 dl_data$minutes_exercised2 <- clean_measures(dl_data$minutes_exercised, type = "minutes", symbols = T)
@@ -169,9 +168,9 @@ dl_data$minutes_exercised3 <- change_measures(dl_data$minutes_exercised2, from =
 |14 |45 mins            | 45                |  45               |   
 |15 |1 hr               | 1 hr              |  60               |  
 
-## Consumed Weekly Alcohol Amount
+## Weekly Alcohol Amount Consumed
 
-By examining both the 'alc_amount' and 'alc_endorsed' variables, it can be seen that the branching logic question 'alc_endorsed' used to administer the 'alc_amount' question, was not implemented for the first 9 participants. Since 'alc_endorsed' responses are not available for these participants, those who would not have endorsed alcohol consumption in the 'alc_endorsed' question have responses to 'alc_amount' which are reflective of consuming no alcohol. The `zero_measures()` function can be used to transform these values to 0 whilst still maintaining true missing values of those who did not answer this question.
+By examining both the 'alc_amount' and 'alc_endorsed' variables, it can be seen that the branching logic question 'alc_endorsed' used to administer the 'alc_amount' question, was not implemented for the first 9 participants. Since 'alc_endorsed' responses are not available for these participants, those who would not have endorsed alcohol consumption in the 'alc_endorsed' question have responses to 'alc_amount' which are reflective of consuming no alcohol. The `zero_measures()` function can be used to transform these values to 0 whilst still maintaining true missing values for those who did not answer this question.
 
 ```
 dl_data$alc_amount2 <- zero_measures(dl_data$alc_amount, include.na = T)
@@ -208,4 +207,3 @@ dl_data$alc_amount3 <- clean_measures(dl_data$alc_amount2, type = "ounces", symb
 # A Final Note
 
 Of course, good data collection techniques would minimize the need for this type of cleaning. The type of responses allowed to be captured in the survey response field is one way to avoid the types of messy data seen with alpha-numeric responses. However, this alone does not ensure good data quality. Improvements to the question being asked and/or the instructions being given to participants must be critically assessed on how they can improve the accuracy of what is being collected.
-
