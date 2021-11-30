@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/430111053.svg)](https://zenodo.org/badge/latestdoi/430111053)
+
 # The {datalark} package!
 
 Akin to the mudlark searching for hidden treasures on the foreshore, the datalark often finds themselves having to search through messy data sets before finding data treasures! Clean data are essential to maintain data integrity, as improper cleaning can result in inaccurate or missing data. The {datalark} package aids in the data cleaning of alpha-numeric (open-text) responses given by participants.
