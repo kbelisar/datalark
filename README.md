@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/430111053.svg)](https://zenodo.org/badge/latestdoi/430111053)
+[![R-CMD-check](https://github.com/kbelisar/datalark/actions/workflows/rcmd_check.yml/badge.svg)](https://github.com/kbelisar/datalark/actions/workflows/rcmd_check.yml) [![DOI](https://zenodo.org/badge/430111053.svg)](https://zenodo.org/badge/latestdoi/430111053)
 
 # The {datalark} package!
 
